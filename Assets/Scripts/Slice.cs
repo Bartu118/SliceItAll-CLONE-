@@ -51,11 +51,13 @@ public class Slice : MonoBehaviour
             SlicedObjTop.AddComponent<Rigidbody>();
             SlicedObjTop.AddComponent<BoxCollider>();
             SlicedObjTop.GetComponent<Rigidbody>().AddForce(Vector3.forward*600);
+            SlicedObjTop.GetComponent<BoxCollider>().isTrigger = true;
 
             GameObject SliceObjDown = sliceobj.CreateLowerHull(other.gameObject,materialSlicedSide);
             SliceObjDown.AddComponent<Rigidbody>();
             SliceObjDown.AddComponent<BoxCollider>();
             SliceObjDown.GetComponent<Rigidbody>().AddForce(Vector3.forward * -600);
+            SliceObjDown.GetComponent<BoxCollider>().isTrigger = true;
 
             Destroy(other.gameObject);
             gameManager.score++;
