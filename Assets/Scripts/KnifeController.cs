@@ -9,7 +9,7 @@ public class KnifeController : MonoBehaviour
 
     Rigidbody rb;
     float jump = 10f;
-    float move = 5f;
+    float move = 7f;
     float gravity = 20;
     
 
@@ -23,9 +23,11 @@ public class KnifeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(Vector3.down*gravity*Time.deltaTime, ForceMode.Impulse);
-        MoveAndJump();
-
+        if (gameObject != null)
+        {
+            rb.AddForce(Vector3.down * gravity * Time.deltaTime, ForceMode.Impulse);
+            MoveAndJump();
+        }
     }
 
     private void MoveAndJump()
@@ -70,6 +72,18 @@ public class KnifeController : MonoBehaviour
         }
         #endregion
 
+        #region TRAMBOLIN
+        if (collision.gameObject.tag == "Trambolin")
+        {
+            print("up");
+            rb.AddForce(Vector3.up * 20, ForceMode.Impulse);
+        }
+        #endregion
+
+        if (collision.gameObject.layer==LayerMask.NameToLayer("Plane"))
+        {
+            Destroy(gameObject);
+        }
     }
 
 }
