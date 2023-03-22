@@ -7,6 +7,8 @@ TagManager:
   - Sap
   - Cutable
   - Trambolin
+  - Boss_Body
+  - Boss_Head
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Inside
   - Plane
   - Shuriken
-  - 
+  - Boss
   - 
   - 
   - 

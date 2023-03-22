@@ -368,6 +368,7 @@
 "Assets/Scripts/Cutable.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/KnifeController.cs"
+"Assets/Scripts/ScoreMultiplier.cs"
 "Assets/Scripts/Slice.cs"
 -langversion:9.0
 
