@@ -12,12 +12,14 @@ public class KnifeController : MonoBehaviour
     float move = 7f;
     float gravity = 20;
     
+    private GameManager gameManager;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame
@@ -27,6 +29,11 @@ public class KnifeController : MonoBehaviour
         {
             rb.AddForce(Vector3.down * gravity * Time.deltaTime, ForceMode.Impulse);
             MoveAndJump();
+        }
+
+        if(gameManager.gameFinish || gameManager.gameOver)
+        {
+            rb.isKinematic= true;
         }
     }
 
@@ -75,15 +82,16 @@ public class KnifeController : MonoBehaviour
         #region TRAMBOLIN
         if (collision.gameObject.tag == "Trambolin")
         {
-            print("up");
             rb.AddForce(Vector3.up * 20, ForceMode.Impulse);
         }
         #endregion
 
+        #region ZEMÝNE DEÐÝNCE ÖLME
         if (collision.gameObject.layer==LayerMask.NameToLayer("Plane"))
         {
             Destroy(gameObject);
         }
+        #endregion
     }
 
 }
