@@ -13,14 +13,14 @@ public class Slice : MonoBehaviour
 
     private void Awake()
     {
-        gameManager= GameObject.Find("GameManager").GetComponent<GameManager>();
-       /* bxCollider = GetComponent<BoxCollider>();*/
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        /* bxCollider = GetComponent<BoxCollider>();*/
+
     }
 
     private void Update()
     {
-        
+
     }
 
 
@@ -44,16 +44,16 @@ public class Slice : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Cutable"))
         {
-            
+
             SlicedHull sliceobj = Kes(other.gameObject, materialSlicedSide);
 
-            GameObject SlicedObjTop = sliceobj.CreateUpperHull(other.gameObject,materialSlicedSide);
+            GameObject SlicedObjTop = sliceobj.CreateUpperHull(other.gameObject, materialSlicedSide);
             SlicedObjTop.AddComponent<Rigidbody>();
             SlicedObjTop.AddComponent<BoxCollider>();
-            SlicedObjTop.GetComponent<Rigidbody>().AddForce(Vector3.forward*600);
+            SlicedObjTop.GetComponent<Rigidbody>().AddForce(Vector3.forward * 600);
             SlicedObjTop.GetComponent<BoxCollider>().isTrigger = true;
 
-            GameObject SliceObjDown = sliceobj.CreateLowerHull(other.gameObject,materialSlicedSide);
+            GameObject SliceObjDown = sliceobj.CreateLowerHull(other.gameObject, materialSlicedSide);
             SliceObjDown.AddComponent<Rigidbody>();
             SliceObjDown.AddComponent<BoxCollider>();
             SliceObjDown.GetComponent<Rigidbody>().AddForce(Vector3.forward * -600);
@@ -61,9 +61,12 @@ public class Slice : MonoBehaviour
 
             Destroy(other.gameObject);
             gameManager.score++;
+            
+           
+
 
         }
-        
+
     }
 
     public SlicedHull Kes(GameObject obj, Material mat)
@@ -71,6 +74,9 @@ public class Slice : MonoBehaviour
         return obj.Slice(transform.position, transform.up, mat);
     }
 
-    
+
+
+
+
 
 }
